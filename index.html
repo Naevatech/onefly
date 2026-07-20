@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>onefly</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+
+    <script>
+     (function () {
+       var t = localStorage.getItem('theme');
+       var d = t ? t === 'dark'
+                 : window.matchMedia('(prefers-color-scheme: dark)').matches;
+       document.documentElement.classList.toggle('dark', d);
+     })();
+   </script>
+   <meta name="theme-color" content="#f5f6fc" media="(prefers-color-scheme: light)">
+   <meta name="theme-color" content="#0c0d13" media="(prefers-color-scheme: dark)">
+  </body>
+</html>

@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+
+/* ---- LIGHT (clean daylight / airport-lounge white) ------------------------ */
+:root {
+  --radius: 0.75rem;
+
+  /* type stacks (mode-independent) */
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-heading: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Consolas, monospace; /* flight nos, times, prices */
+
+  /* layout */
+  --page-gutter: clamp(16px, 5.5vw, 80px);
+  --page-max-width: 1200px;
+
+  /* ---- Neutrals (0 → 900) ---- */
+  --neutral-0: #fcfcfe;
+  --neutral-50: #f5f6fc;
+  --neutral-100: #eeeff8;
+  --neutral-200: #dfe0eb;
+  --neutral-300: #c8cad4;
+  --neutral-500: #848590;
+  --neutral-700: #40424b;
+  --neutral-900: #12131a;
+
+  /* ---- Accent: indigo / violet ---- */
+  --accent: #5e69e8;
+  --accent-hover: #4c52d0;
+  --accent-soft: #e1e7ff;
+  --ink: #12131a;
+
+  /* ---- Semantic ---- */
+  --success: #2e9e52;
+  --success-soft: #d5f5da;
+  --danger: #d73337;
+  --danger-soft: #ffe0dc;
+
+  /* ---- Surfaces & text ---- */
+  --bg: #f5f6fc;
+  --surface: #fcfcfe;
+  --surface-2: #eeeff8;
+  --border: #dfe0eb;
+  --text-1: #12131a;
+  --text-2: #848590;
+
+  /* ---- shadcn/ui-style semantic aliases ---- */
+  --background: var(--bg);
+  --foreground: var(--text-1);
+  --card: var(--surface);
+  --card-foreground: var(--text-1);
+  --popover: var(--surface);
+  --popover-foreground: var(--text-1);
+  --primary: var(--accent);
+  --primary-foreground: var(--neutral-0);
+  --secondary: var(--surface-2);
+  --secondary-foreground: var(--text-1);
+  --muted: var(--surface-2);
+  --muted-foreground: var(--text-2);
+  --accent-fg: var(--ink);
+  --destructive: var(--danger);
+  --destructive-foreground: var(--neutral-0);
+  --input: var(--border);
+  --ring: var(--accent);
+
+  /* signature: the "boarding" glow, used for focus halos / active states / CTAs */
+  --glow: var(--accent);
+  --glow-soft: rgba(94, 105, 232, 0.18);
+  --shadow-card: 0 1px 2px rgba(18, 19, 26, 0.06), 0 8px 24px rgba(18, 19, 26, 0.06);
+  --shadow-glow: 0 0 0 1px var(--glow-soft), 0 8px 40px -8px rgba(94, 105, 232, 0.45);
+
+  color-scheme: light;
+}
+
+/* ---- DARK (night-flight / cockpit) ---------------------------------------- */
+.dark {
+  --neutral-0: #1b1c24;
+  --neutral-50: #0c0d13;
+  --neutral-100: #25262e;
+  --neutral-200: #31323b;
+  --neutral-300: #464750;
+  --neutral-500: #8a8b95;
+  --neutral-700: #c2c3cc;
+  --neutral-900: #f1f1f6;
+
+  --accent: #5e69e8;
+  --accent-hover: #4c52d0;
+  --accent-soft: #2b314c;
+  --ink: #f1f1f6;
+
+  --success: #2e9e52;
+  --success-soft: #14361d;
+  --danger: #d73337;
+  --danger-soft: #47211e;
+
+  --bg: #0c0d13;
+  --surface: #1b1c24;
+  --surface-2: #25262e;
+  --border: #31323b;
+  --text-1: #f1f1f6;
+  --text-2: #8a8b95;
+
+  --background: var(--bg);
+  --foreground: var(--text-1);
+  --card: var(--surface);
+  --card-foreground: var(--text-1);
+  --popover: var(--surface-2);
+  --popover-foreground: var(--text-1);
+  --primary: var(--accent);
+  --primary-foreground: var(--neutral-0);
+  --secondary: var(--surface-2);
+  --secondary-foreground: var(--text-1);
+  --muted: var(--surface-2);
+  --muted-foreground: var(--text-2);
+  --accent-fg: var(--ink);
+  --destructive: var(--danger);
+  --destructive-foreground: var(--neutral-0);
+  --input: var(--border);
+  --ring: var(--accent);
+
+  --glow: var(--accent);
+  --glow-soft: rgba(94, 105, 232, 0.22);
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px rgba(0, 0, 0, 0.45);
+  --shadow-glow: 0 0 0 1px var(--glow-soft), 0 10px 60px -10px rgba(94, 105, 232, 0.4);
+
+  color-scheme: dark;
+}
+
+/* ---- expose tokens to Tailwind (utilities point at the vars, so they flip) */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-fg);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-glow: var(--glow);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+
+  --color-neutral-0: var(--neutral-0);
+  --color-neutral-50: var(--neutral-50);
+  --color-neutral-100: var(--neutral-100);
+  --color-neutral-200: var(--neutral-200);
+  --color-neutral-300: var(--neutral-300);
+  --color-neutral-500: var(--neutral-500);
+  --color-neutral-700: var(--neutral-700);
+  --color-neutral-900: var(--neutral-900);
+
+  --font-sans: var(--font-sans);
+  --font-heading: var(--font-heading);
+  --font-mono: var(--font-mono);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* ---- base layer ---------------------------------------------------------- */
+@layer base {
+  * { border-color: var(--border); }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font: 400 1rem/1.6 var(--font-sans);
+    letter-spacing: 0.1px;
+    -webkit-font-smoothing: antialiased;
+    font-synthesis: none;
+    /* PWA feel: no rubber-banding, no tap flash */
+    overscroll-behavior-y: none;
+    -webkit-tap-highlight-color: transparent;
+    /* respect notches / home indicators */
+    padding: env(safe-area-inset-top) env(safe-area-inset-right)
+             env(safe-area-inset-bottom) env(safe-area-inset-left);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    color: var(--foreground);
+  }
+
+  /* flight numbers, times, prices, seat codes read in tabular mono */
+  .tabular, .flight-code, .flight-time, .price {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0;
+  }
+
+  /* indigo focus halo — the "boarding" signature */
+  :focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--ring);
+  }
+
+  ::selection { background: var(--glow-soft); }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+}
+
+/* ---- a few reusable helpers keyed to the palette ------------------------- */
+@layer components {
+  .container-page {
+    max-width: var(--page-max-width);
+    margin-inline: auto;
+    padding-inline: var(--page-gutter);
+  }
+  /* frosted "glass" surface for sticky search bars / boarding-pass cards */
+  .glass {
+    background: color-mix(in oklab, var(--card) 70%, transparent);
+    backdrop-filter: blur(12px);
+    border: 1px solid color-mix(in oklab, var(--border) 80%, transparent);
+  }
+  /* status pills */
+  .badge-success { background: var(--success-soft); color: var(--success); }
+  .badge-danger { background: var(--danger-soft); color: var(--danger); }
+  .badge-accent { background: var(--accent-soft); color: var(--accent-hover); }
+
+  /* the indigo CTA glow */
+  .glow-ring { box-shadow: var(--shadow-glow); }
+}
